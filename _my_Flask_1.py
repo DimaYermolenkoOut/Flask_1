@@ -27,6 +27,18 @@ class Post(db.Model):
 def index():
     return render_template("index.html")
 
+
+# def create_user(username, password, user_phone, email):
+#     user = Users(username=username, password=password, user_phone=user_phone, email=email)
+#     db.session.add(user)
+#     db.session.commit()
+
+@app.route("/posts")
+def posts():
+    posts = Post.query.all()
+    return render_template("posts.html", posts=posts)
+
+
 @app.route("/create", methods=["GET", "POST"])
 def create():
     if request.method == "POST":
