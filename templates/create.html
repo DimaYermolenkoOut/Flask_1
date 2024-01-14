@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block tittle %}
+СТВОРЕННЯ ЗАПИСІВ
+{% endblock %}
+
+
+{% block body %}
+<h1>СТВОРЕННЯ ЗАПИСІВ</h1>
+
+<form method="post" class="form-control">
+    <input type="text" name="title" placeholder="Назва" class="form-control"> <br>
+    <input type="text" name="text" placeholder="Текст" class="form-control">
+    <button type="submit" class="btn btn-success">Додати</button>
+</form>
+
+{% endblock %}

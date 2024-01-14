@@ -27,6 +27,11 @@ class Post(db.Model):
 def index():
     return render_template("index.html")
 
+@app.route("/create")
+def create():
+    return render_template("create.html")
+
+
 
 @app.route("/about")
 def about():
