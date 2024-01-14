@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
@@ -27,8 +27,21 @@ class Post(db.Model):
 def index():
     return render_template("index.html")
 
-@app.route("/create")
+@app.route("/create", methods=["GET", "POST"])
 def create():
+    if request.method == "POST":
+        title = request.form["title"]
+        text = request.form["text"]
+
+        post = Post(title=title, text=text)
+
+        try:
+            db.session.add(post)
+            db.session.commit()
+            return render_template("index.html")
+        except:
+            return "Помилка"
+
     return render_template("create.html")
 
 
